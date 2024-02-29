@@ -51,7 +51,7 @@ if st.sidebar.checkbox("Show Summary Statistics"):
     st.write(data.describe())
 
 # Show dataset source
-st.sidebar.markdown("[Download Dataset](https://link-to-your-dataset)")
+st.sidebar.markdown("[Download Dataset](https://www.kaggle.com/code/ramanchandra/bike-sharing-data-analysis)")
 
 st.sidebar.markdown('**Weather:**')
 st.sidebar.markdown('1: Cerah, Sedikit awan, Berawan sebagian, Berawan sebagian')
@@ -73,9 +73,9 @@ with col1:
     season_mapping = {1: "Musim Semi", 2: "Musim Panas", 3: "Musim Hujan", 4: "Musim Dingin"}
     data["season_label"] = data["season"].map(season_mapping)
 
-    season_count = data.groupby("season_label")["total_count"].sum().reset_index()
+    season_count = data.groupby("season_label")["cnt"].sum().reset_index()
     fig_season_count = px.bar(season_count, x="season_label",
-                              y="total_count", title="Jumlah Penyewa berdasarkan Musim")
+                              y="cnt", title="Jumlah Penyewa berdasarkan Musim")
     st.plotly_chart(fig_season_count, use_container_width=True,
                     height=400, width=600)
 
@@ -83,31 +83,31 @@ with col2:
     # Weather situation-wise bike share count
     # st.subheader("Weather Situation-wise Bike Share Count")
 
-    weather_count = data.groupby("weather_condition")["total_count"].sum().reset_index()
-    fig_weather_count = px.bar(weather_count, x="weather_condition",
-                               y="total_count", title="Jumlah Penyewa berdasar Cuaca")
+    weather_count = data.groupby("weathersit")["cnt"].sum().reset_index()
+    fig_weather_count = px.bar(weather_count, x="weathersit",
+                               y="cnt", title="Jumlah Penyewa berdasar Cuaca")
     # Mengatur tinggi dan lebar gambar
     st.plotly_chart(fig_weather_count, use_container_width=True,height=400, width=800)
 
 
 # Hourly bike share count
 # st.subheader("Hourly Bike Share Count")
-hourly_count = data.groupby("hour")["total_count"].sum().reset_index()
+hourly_count = data.groupby("hr")["cnt"].sum().reset_index()
 fig_hourly_count = px.line(
-    hourly_count, x="hour", y="total_count", title="Jumlah Penyewa Per-Jam")
+    hourly_count, x="hr", y="cnt", title="Jumlah Penyewa Per-Jam")
 st.plotly_chart(fig_hourly_count, use_container_width=True,
                 height=400, width=600)
 
 # Humidity vs. Bike Share Count
 # st.subheader("Humidity vs. Bike Share Count")
 fig_humidity_chart = px.scatter(
-    data, x="humidity", y="total_count", title="Kelembaban vs. Jumlah Penyewa")
+    data, x="hum", y="cnt", title="Kelembaban vs. Jumlah Penyewa")
 st.plotly_chart(fig_humidity_chart)
 
 # Wind Speed vs. Bike Share Count
 # st.subheader("Wind Speed vs. Bike Share Count")
 fig_wind_speed_chart = px.scatter(
-    data, x="windspeed", y="total_count", title="Kecepatan Angin vs. Jumlah Penyewa")
+    data, x="windspeed", y="cnt", title="Kecepatan Angin vs. Jumlah Penyewa")
 st.plotly_chart(fig_wind_speed_chart)
 
 # Temperature vs. Bike Share Count
