@@ -1,8 +1,5 @@
 #Dashboard Streamlit
 
-#By : DEE'MAS A. KHOIRI RAHMANDANI
-#ID Dicoding : https://www.dicoding.com/users/deemas_dee/
-#Email : deemasdee@gmail.com
 
 # Import Library
 import streamlit as st
@@ -28,11 +25,9 @@ st.title("Bike Share Dashboard")
 
 # SIDEBAR
 st.sidebar.title("Contact Person:")
-st.sidebar.markdown("**• DEE'MAS A. KHOIRI RAHMANDANI**")
+st.sidebar.markdown("**• DeemasDee**")
 st.sidebar.markdown(
     "**• Email: [deemasdee@gmail.com](deemasdee@gmail.com)**")
-st.sidebar.markdown(
-    "**• ID Dicoding: [deemas_dee](https://www.dicoding.com/users/deemas_dee/)**")
 st.sidebar.markdown(
     "**• LinkedIn: [Deemas Dee](https://www.linkedin.com/in/deemas-dee/)**")
 st.sidebar.markdown(
